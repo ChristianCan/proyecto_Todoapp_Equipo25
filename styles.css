@@ -1,0 +1,69 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+
+.titulo {
+	background-size: 100%;
+	animation: movimiento 10s infinite linear alternate;
+	background-repeat: no-repeat; 
+}
+
+@keyframes movimiento {
+	from {
+		background-position: bottom left;
+	}
+	to {
+		background-position: top right;
+	}
+}
+
+.listdiv {
+	text-align: center;
+	margin-top: 10px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.newtodo {
+	font-size: 20px;
+	justify-content: flex-start;
+	margin-right: 10px;
+	max-width: 400px;
+	width: 400px;
+	border-radius: 10px;
+	border: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+.btn-check {
+	background-color: #fff;
+	color: #44FF0D;
+	font-size: 20px;
+	margin-right: 10px;
+	width: 40px;
+	border-radius: 50%;
+	border: 2px solid #44FF0D;
+	cursor: pointer;
+}
+
+.btn-check:hover {
+	background-color: #44FF0D;
+	color: #fff;
+}
+
+.btn-delete {
+	background-color: #fff;
+	color: red;
+	font-size: 20px;
+	width: 40px;
+	border-radius: 50%;
+	border: 2px solid red;
+}
+
+.btn-delete:hover {
+	background-color: red;
+	color: #fff;
+}
