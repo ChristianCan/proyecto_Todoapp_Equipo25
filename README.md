@@ -174,7 +174,7 @@ Si el valor que se recibe es *true*, por medio de la función *remove* eliminamo
 
 ### Integrantes del equipo
 
-Can Pérez Christian Alejandro
-Cano Meza José Armando
-García Ortega Jhonatan Elias
-Villa Bárcenas Daniela
+Can Pérez Christian Alejandro.
+Cano Meza José Armando.
+García Ortega Jhonatan Elias.
+Villa Bárcenas Daniela.
