@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/styles.css">
+	<title>APP TO DO</title>
+</head>
+<body>
+	
+	<div id="app"></div>
+
+	
+	<script>
+		var father = document.getElementById("app");
+
+		//Creación de div con la clase titulo
+		var header = document.createElement("div");
+		//Añadiendo Atributos
+		header.setAttribute("class", "titulo");
+		//Insertando Todo lo anterior dentro del id="app"
+		father.appendChild(header);
+
+
+		//Creación del h1 
+		var elementHone = document.createElement("h1")
+		//Creacion de texto que va dentro del h1
+		var contentHone = document.createTextNode("To Do App");
+		//Poniendo texto dentro del h1
+		elementHone.appendChild(contentHone);
+		//Insetando Todo dentro de class="titulo"
+	 	header.appendChild(elementHone);
+
+
+	 	//Creacion de form
+	 	var createNote = document.createElement("form");
+	 	//Añadiendo sus Atrubutos
+	 	createNote.setAttribute("align","center");
+	 	//Insertando Todo dentro del id="app"
+	 	father.appendChild(createNote);
+
+
+	 	//Creando input
+	 	var input = document.createElement("input");
+	 	//Añadiendo Atributos
+	 	input.setAttribute("type","text");
+	 	input.setAttribute("placeholder","Add a task");
+	 	input.setAttribute("id","input-task");
+	 	//Insertando Todo en el form
+	 	createNote.appendChild(input);
+
+
+	 	//Creando un boton
+	 	var button = document.createElement("button");
+	 	//Añadiendo estilos al boton
+	 	button.setAttribute("type","submit");
+	 	button.setAttribute("id","btn-task");
+	 	//Creando texto para el boton
+	 	var textButton = document.createTextNode("Add");
+	 	//Añadiendo el texto al Boton
+	 	button.appendChild(textButton);
+	 	//Insetando Todo al form
+	 	createNote.appendChild(button);
+
+
+	 	//Creando ultimo div
+		var box = document.createElement("div");
+		//Añadiendo Atributos
+		box.setAttribute("class", "todo-box");
+		//Insertando a id="app"
+		father.appendChild(box);
+
+		//Seccion: Dando estilos a los elementos
+
+		//Estilos a Titulo
+		var titleStyle = document.querySelector('#app .titulo');
+		titleStyle.setAttribute("style","height:200px");
+		titleStyle.style.color = "#fff";
+		titleStyle.style.backgroundImage = "url(fondo.jpg)";
+		titleStyle.style.backgroundSize = "cover";
+		titleStyle.style.marginTop = "-20px";
+		titleStyle.style.display = "flex";
+		titleStyle.style.justifyContent = "center";
+		titleStyle.style.alignItems = "center";
+		titleStyle.style.width = "100%";
+
+		//Estilos texto h1
+		var hunoStyle = document.querySelector("h1");
+		hunoStyle.style.fontSize = "4em";
+
+		//Estilos a el formulario
+		var formStyle = document.querySelector("form");
+		formStyle.style.marginTop = "30px";
+
+		//Estilos a el input
+		var inputStyle = document.querySelector("input");
+		inputStyle.style.fontSize = "25px";
+		inputStyle.style.paddingLeft = "5px";
+		inputStyle.style.borderRadius = "10px";	
+
+		//Estilos al boton
+		var buttonStyle = document.querySelector("button");
+		buttonStyle.style.color = "navy";
+		buttonStyle.style.background = "#fff";
+		buttonStyle.style.marginLeft = "10px";
+		buttonStyle.style.fontSize = "25px";
+		buttonStyle.style.borderRadius = "10px";
+		buttonStyle.style.cursor = "pointer";
+		buttonStyle.style.borderColor = "navy";
+		buttonStyle.style.width = "70px";
+	</script>
+
+	<script src="main.js"></script>
+
+</body>
+</html>
