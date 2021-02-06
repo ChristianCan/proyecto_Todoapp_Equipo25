@@ -45,18 +45,26 @@ function addTask(e) {
 
 function deleteComplete(e) {
     const item = e.target;
-
     //check button
-    if (item.classList[0] === "btn-check") {
+    if (item.classList[0] === "btn-check" && isChecked === false) {
         const todo = item.parentElement;
-
         todo.style.textDecoration = "line-through";
+        isChecked = true;
+    } else if (item.classList[0] === "btn-check" && isChecked === true) {
+        const todo = item.parentElement;
+        todo.style.textDecoration = "none";
+        isChecked = false;
     }
 
     //delete button
     if (item.classList[0] === "btn-delete") {
         const todo = item.parentElement;
+        const answer = confirm("Are you sure you want to delete?");
 
-        todo.remove();
+        if (answer === true) {
+            todo.remove();
+        } else {
+            return false;
+        }
     }
 }
