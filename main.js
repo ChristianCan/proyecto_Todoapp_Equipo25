@@ -2,6 +2,7 @@
 const inputTask = document.querySelector("#input-task");
 const btnTask = document.querySelector("#btn-task");
 const toDoList = document.querySelector(".todo-box");
+let isChecked = true;
 
 //event listeners
 btnTask.addEventListener("click", addTask);
