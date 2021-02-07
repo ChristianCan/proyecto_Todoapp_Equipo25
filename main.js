@@ -14,7 +14,6 @@ function addTask(e) {
     const btnCheck = document.createElement("button");
     const btnDelete = document.createElement("button");
 
-    //example styles (remove this)
     newToDo.style.display = "inline";
 
     newToDo.innerText = inputTask.value;
