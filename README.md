@@ -25,12 +25,12 @@ En el documento HTML agregamos elementos iniciales para la creación de la aplic
 - Contenedor para el título
 ```js
 var father = document.getElementById("app");
-		//Creación de div con la clase titulo
-		var header = document.createElement("div");
-		//Añadiendo Atributos
-		header.setAttribute("class", "titulo");
-		//Insertando Todo lo anterior dentro del id="app"
-		father.appendChild(header);
+//Creación de div con la clase titulo
+var header = document.createElement("div");
+//Añadiendo Atributos
+header.setAttribute("class", "titulo");
+//Insertando Todo lo anterior dentro del id="app"
+father.appendChild(header);
 ```
 - Título de la aplicación
 ```js
