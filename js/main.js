@@ -49,6 +49,7 @@ function addTask(e) {
   listDiv.setAttribute("class", "listdiv");
   newToDo.setAttribute("class", "newtodo");
 
+  newToDo.style.textDecoration = "none";
   newToDo.style.display = "inline";
 
   newToDo.innerText = inputTask.value;
@@ -74,13 +75,22 @@ function deleteComplete(e) {
   const item = e.target;
   const classBtn = item.classList[0];
 
+  try {
+    const todo = item.previousSibling;
+    if (todo.style.textDecoration === "none") {
+      isChecked = false;
+    } else {
+      isChecked = true;
+    }
+  } catch {}
+
   if (classBtn === "btn-check" && isChecked === false) {
-    const todo = item.parentElement;
+    const todo = item.previousSibling;
 
     todo.style.textDecoration = "line-through";
     isChecked = true;
   } else if (classBtn === "btn-check" && isChecked === true) {
-    const todo = item.parentElement;
+    const todo = item.previousSibling;
 
     todo.style.textDecoration = "none";
     isChecked = false;
