@@ -42,7 +42,6 @@ function deleteComplete(e) {
     if (classBtn === "btn-check" && isChecked === false) {
         const todo = item.parentElement;
 
-        console.log(todo);
         todo.style.textDecoration = "line-through";
         isChecked = true;
     } else if (classBtn === "btn-check" && isChecked === true) {
