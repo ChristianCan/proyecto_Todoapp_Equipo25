@@ -10,6 +10,8 @@ La aplicación se encuentra desarrollada con JavaScript, HTML y CSS, los element
 
 # Desarrollo
 
+
+
 ### Código
 Hacemos referencia a los estilos de la aplicación
 
@@ -17,27 +19,79 @@ Hacemos referencia a los estilos de la aplicación
     <link rel="stylesheet" href="css/styles.css" />
 ```
 
+### Creación de estructura básica de la To Do App
 
-En el documento HTML agregamos elementos iniciales para la creación de la aplicación, como:
-- Contenedor de la aplicación
+En el documento HTML agregamos elementos iniciales para la creación de la aplicación, todos los crearemos por medio de JS, como:
+- Contenedor para el título
+```js
+var father = document.getElementById("app");
+		//Creación de div con la clase titulo
+		var header = document.createElement("div");
+		//Añadiendo Atributos
+		header.setAttribute("class", "titulo");
+		//Insertando Todo lo anterior dentro del id="app"
+		father.appendChild(header);
+```
+- Título de la aplicación
+```js
+//Creación de etiqueta h1 para título 
+var elementHone = document.createElement("h1")
+//Creacion de texto que va dentro del h1
+var contentHone = document.createTextNode("To Do App");
+//Poniendo texto dentro del h1
+elementHone.appendChild(contentHone);
+//Insertando Todo dentro de class="titulo"
+header.appendChild(elementHone);
+```
 - Formulario 
+```js
+//Creacion de etiqueta form para la creación de una tarea
+var createNote = document.createElement("form");
+//Añadiendo sus Atributos
+createNote.setAttribute("align","center");
+//Insertando Todo dentro del id="app"
+father.appendChild(createNote);
+
+```
 - Input para escribir la tarea a agregar
     - Este lleva un id **(input-task)** para identificar el elemento en el código JS.
+```js
+//Creando de etiqueta input
+var input = document.createElement("input");
+//Añadiendo Atributos
+input.setAttribute("type","text");
+input.setAttribute("placeholder","Add a task");
+input.setAttribute("id","input-task");
+//Insertando Todo en el elemento form creado con anterioridad
+createNote.appendChild(input);
+```
 - Botón para agregar una nueva tarea
     - Le asignamos un id **(btn-task)** también para poder utilizarlo en el archivo JS
+```js
+//Creando una etiqueta del tipo button
+var button = document.createElement("button");
+//Añadiendo estilos al boton
+button.setAttribute("type","submit");
+button.setAttribute("id","btn-task");
+//Creando texto para el boton
+var textButton = document.createTextNode("Add");
+//Añadiendo el texto al Boton
+button.appendChild(textButton);
+//Insertando en el elemento form
+createNote.appendChild(button);
+```
 - Contenedor para la lista de tareas, le asignamos una clase **(todo-box)**
+```js
+//Creando div que será el contenedor de tareas
+var box = document.createElement("div");
+//Añadiendo Atributos
+box.setAttribute("class", "todo-box");
+//Insertando a el contenedor app
+father.appendChild(box);
+```
 - Referencia al código JS
-
-```html
-    <div class="app"> 
-        <h1>ToDo App</h1>
-        <form>
-            <input type="text" placeholder="Add a task" id="input-task" />
-            <button id="btn-task" type="submit">Add</button>
-        </form>
-        <div class="todo-box"></div>
-    </div>
-    <script src="js/main.js"></script>
+```js
+<script src="main.js"></script>
 ```
 
 # JAVASCRIPT
@@ -178,3 +232,4 @@ Can Pérez Christian Alejandro
 Cano Meza José Armando  
 García Ortega Jhonatan Elias  
 Villa Bárcenas Daniela  
+
