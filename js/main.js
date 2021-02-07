@@ -1,7 +1,7 @@
 const father = document.getElementById("app");
 const header = document.createElement("div");
-const elementHone = document.createElement("h1");
-const contentHone = document.createTextNode("To Do App");
+const elementHome = document.createElement("h1");
+const contentHome = document.createTextNode("To Do App");
 const createNote = document.createElement("form");
 const input = document.createElement("input");
 const button = document.createElement("button");
@@ -11,8 +11,8 @@ const box = document.createElement("div");
 header.setAttribute("class", "titulo");
 father.appendChild(header);
 
-elementHone.appendChild(contentHone);
-header.appendChild(elementHone);
+elementHome.appendChild(contentHome);
+header.appendChild(elementHome);
 
 createNote.setAttribute("align", "center");
 father.appendChild(createNote);
