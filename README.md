@@ -21,72 +21,51 @@ Hacemos referencia a los estilos de la aplicación
 
 ### Creación de estructura básica de la To Do App
 
-En el documento HTML agregamos elementos iniciales para la creación de la aplicación, todos los crearemos por medio de JS, como:
-- Contenedor para el título
+En el documento HTML agregamos elementos iniciales para la creación de la aplicación, todos los crearemos por medio de JS, además agregamos los atributos necesarios para cada elemento, como clases, id, y algunos estilos:
+- Contenedor de la aplicación
 ```js
-var father = document.getElementById("app");
-//Creación de div con la clase titulo
-var header = document.createElement("div");
-//Añadiendo Atributos
+const father = document.getElementById("app");
+const header = document.createElement("div");
 header.setAttribute("class", "titulo");
-//Insertando Todo lo anterior dentro del id="app"
 father.appendChild(header);
 ```
 - Título de la aplicación
 ```js
-//Creación de etiqueta h1 para título 
-var elementHone = document.createElement("h1")
-//Creacion de texto que va dentro del h1
-var contentHone = document.createTextNode("To Do App");
-//Poniendo texto dentro del h1
-elementHone.appendChild(contentHone);
-//Insertando Todo dentro de class="titulo"
-header.appendChild(elementHone);
+const elementHome = document.createElement("h1");
+const contentHome = document.createTextNode("To Do App");
+elementHome.appendChild(contentHome);
+header.appendChild(elementHome);
+
 ```
 - Formulario 
 ```js
-//Creacion de etiqueta form para la creación de una tarea
-var createNote = document.createElement("form");
-//Añadiendo sus Atributos
-createNote.setAttribute("align","center");
-//Insertando Todo dentro del id="app"
+const createNote = document.createElement("form");
+createNote.setAttribute("align", "center");
 father.appendChild(createNote);
-
 ```
 - Input para escribir la tarea a agregar
     - Este lleva un id **(input-task)** para identificar el elemento en el código JS.
 ```js
-//Creando de etiqueta input
-var input = document.createElement("input");
-//Añadiendo Atributos
-input.setAttribute("type","text");
-input.setAttribute("placeholder","Add a task");
-input.setAttribute("id","input-task");
-//Insertando Todo en el elemento form creado con anterioridad
+const input = document.createElement("input");
+input.setAttribute("type", "text");
+input.setAttribute("placeholder", "Add a task");
+input.setAttribute("id", "input-task");
 createNote.appendChild(input);
 ```
 - Botón para agregar una nueva tarea
     - Le asignamos un id **(btn-task)** también para poder utilizarlo en el archivo JS
 ```js
-//Creando una etiqueta del tipo button
-var button = document.createElement("button");
-//Añadiendo estilos al boton
-button.setAttribute("type","submit");
-button.setAttribute("id","btn-task");
-//Creando texto para el boton
-var textButton = document.createTextNode("Add");
-//Añadiendo el texto al Boton
+const button = document.createElement("button");
+const textButton = document.createTextNode("Add");
+button.setAttribute("type", "submit");
+button.setAttribute("id", "btn-task");
 button.appendChild(textButton);
-//Insertando en el elemento form
 createNote.appendChild(button);
 ```
 - Contenedor para la lista de tareas, le asignamos una clase **(todo-box)**
 ```js
-//Creando div que será el contenedor de tareas
-var box = document.createElement("div");
-//Añadiendo Atributos
+const box = document.createElement("div");
 box.setAttribute("class", "todo-box");
-//Insertando a el contenedor app
 father.appendChild(box);
 ```
 - Referencia al código JS
@@ -140,6 +119,9 @@ function addTask(e) {
     const newToDo = document.createElement("li"); // 2
     const btnCheck = document.createElement("button"); // 3
     const btnDelete = document.createElement("button"); // 4
+    
+     listDiv.setAttribute("class", "listdiv");
+    newToDo.setAttribute("class", "newtodo");
 ```
 
 Una vez que declaramos los elementos que ocuparemos para cada tarea proseguimos a agregarla a la lista.
@@ -178,14 +160,26 @@ Después limpiamos el input para agregar una nueva tarea.
     inputTask.value = "";
 ```
 
-Proseguimos a la función ***deleteComplete***, recibimos el evento que se activa y hacemos referencia al objeto que activa este evento para asignarlo a una constante denominada *item*, el objeto que se obtiene es el contenedor donde se almacena la tarea y sus botones de acción.
+Proseguimos a la función ***deleteComplete***, recibimos el evento que se activa y hacemos referencia al objeto que activa este evento para asignarlo a una constante denominada *item*, el objeto que se obtiene es el contenedor donde se almacena la tarea y sus botones de acción, obtenemos la clase del botón que se pulsó.
 
 ```js
     function deleteComplete(e) {
     const item = e.target;
+     const classBtn = item.classList[0];
 ```
+Obtenemos el nodo hermano anterior del item que se seleccionó y verificamos si tiene un estilo textDecoration del tipo none, lo cual indica que no ha sido marcada la tarea, de ser así iniciamos la variable *isChecked* como falso, y sino como true.
 
-Iniciamos identificando si el botón que se pulsó fue el *marcar la tarea como terminada*, esto lo podemos verificar si la clase del elemento en su primera posición es *btn-checked*, después consutlamos si la variable declarada en un inicio (*isChecked*) es false, lo que significa que la tarea no está marcada como terminada; si estas dos condiciones se cumplen obtenemos el elemento padre (la tarea) y la marcamos como terminada con una función de CSS (***textDecoration = "lineThrough"***) y declaramos la variable *isChecked* como true. 
+```js
+ try {
+    const todo = item.previousSibling;
+    if (todo.style.textDecoration === "none") {
+      isChecked = false;
+    } else {
+      isChecked = true;
+    }
+  } catch {}
+```
+Iniciamos identificando si el botón que se pulsó fue el *marcar la tarea como terminada*, esto lo podemos verificar si la clase del elemento en su primera posición es *btn-checked*, después consutlamos si la variable declarada en un inicio (*isChecked*) es false, lo que significa que la tarea no está marcada como terminada; si estas dos condiciones se cumplen obtenemos el elemento hermano anterior (la tarea) y la marcamos como terminada con una función de CSS (***textDecoration = "lineThrough"***) y declaramos la variable *isChecked* como true. 
 
 Ejemplo de tarea terminada:
 1. Esta tarea no esta terminada
@@ -193,17 +187,17 @@ Ejemplo de tarea terminada:
 
 ```js
 if (item.classList[0] === "btn-check" && isChecked === false) {
-        const todo = item.parentElement;
+       const todo = item.previousSibling;
         todo.style.textDecoration = "line-through";
         isChecked = true;
     } 
 ```
 
-Para determinar si una tarea está terminaday queremos ponerla de nuevo como **no terminada**, realizamos un *else if*, donde verificamos que la clase del elemeno sea *btn-check*, y que la variable *isChecked* sea true, obtenemos el elemento padre, y por medio de *textDecoration* le indicamos que sea ***none***. Indicamos la variable *isChecked* como false.
+Para determinar si una tarea está terminaday queremos ponerla de nuevo como **no terminada**, realizamos un *else if*, donde verificamos que la clase del elemeno sea *btn-check*, y que la variable *isChecked* sea true, obtenemos el elemento hermano anterior, y por medio de *textDecoration* le indicamos que sea ***none***. Indicamos la variable *isChecked* como false.
 
 ```js
 else if (item.classList[0] === "btn-check" && isChecked === true) {
-        const todo = item.parentElement;
+        const todo = item.previousSibling;
         todo.style.textDecoration = "none";
         isChecked = false;
     }
