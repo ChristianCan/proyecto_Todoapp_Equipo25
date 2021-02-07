@@ -1,14 +1,11 @@
-//variables
 const inputTask = document.querySelector("#input-task");
 const btnTask = document.querySelector("#btn-task");
 const toDoList = document.querySelector(".todo-box");
-let isChecked = true;
+let isChecked = false;
 
-//event listeners
 btnTask.addEventListener("click", addTask);
 toDoList.addEventListener("click", deleteComplete);
 
-//functions
 function addTask(e) {
     e.preventDefault();
 
@@ -20,7 +17,6 @@ function addTask(e) {
     //example styles (remove this)
     newToDo.style.display = "inline";
 
-    //adding input value
     newToDo.innerText = inputTask.value;
     if (inputTask.value === "") {
         return null;
@@ -28,43 +24,41 @@ function addTask(e) {
         listDiv.appendChild(newToDo);
     }
 
-    //adding check button
     btnCheck.innerText = "V";
     btnCheck.classList.add("btn-check");
     listDiv.appendChild(btnCheck);
 
-    //adding delete button
     btnDelete.innerText = "X";
     btnDelete.classList.add("btn-delete");
     listDiv.appendChild(btnDelete);
 
-    //adding to toDo div
     toDoList.appendChild(listDiv);
     inputTask.value = "";
 }
 
 function deleteComplete(e) {
     const item = e.target;
-    //check button
-    if (item.classList[0] === "btn-check" && isChecked === false) {
+    const classBtn = item.classList[0];
+
+    if (classBtn === "btn-check" && isChecked === false) {
         const todo = item.parentElement;
+
+        console.log(todo);
         todo.style.textDecoration = "line-through";
         isChecked = true;
-    } else if (item.classList[0] === "btn-check" && isChecked === true) {
+    } else if (classBtn === "btn-check" && isChecked === true) {
         const todo = item.parentElement;
+
         todo.style.textDecoration = "none";
         isChecked = false;
     }
 
-    //delete button
-    if (item.classList[0] === "btn-delete") {
+    if (classBtn === "btn-delete") {
         const todo = item.parentElement;
         const answer = confirm("Are you sure you want to delete?");
 
         if (answer === true) {
             todo.remove();
-        } else {
-            return false;
         }
     }
 }
