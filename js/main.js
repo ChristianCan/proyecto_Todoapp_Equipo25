@@ -1,3 +1,35 @@
+const father = document.getElementById("app");
+const header = document.createElement("div");
+const elementHone = document.createElement("h1");
+const contentHone = document.createTextNode("To Do App");
+const createNote = document.createElement("form");
+const input = document.createElement("input");
+const button = document.createElement("button");
+const textButton = document.createTextNode("Add");
+const box = document.createElement("div");
+
+header.setAttribute("class", "titulo");
+father.appendChild(header);
+
+elementHone.appendChild(contentHone);
+header.appendChild(elementHone);
+
+createNote.setAttribute("align", "center");
+father.appendChild(createNote);
+
+input.setAttribute("type", "text");
+input.setAttribute("placeholder", "Add a task");
+input.setAttribute("id", "input-task");
+createNote.appendChild(input);
+
+button.setAttribute("type", "submit");
+button.setAttribute("id", "btn-task");
+button.appendChild(textButton);
+createNote.appendChild(button);
+
+box.setAttribute("class", "todo-box");
+father.appendChild(box);
+
 const inputTask = document.querySelector("#input-task");
 const btnTask = document.querySelector("#btn-task");
 const toDoList = document.querySelector(".todo-box");
